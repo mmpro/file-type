@@ -137,6 +137,17 @@ It only needs the first 262 bytes.
 
 *PR welcome for additional commonly used file types.*
 
+## Add new magic numbers
+Determine the magic numbers by using the readChunk result to create a signature:
+```
+var signature = "";
+for(var x = 0; x < 20; x++) {
+    if (result[x]) signature += result[x].toString(16)+' ';
+}
+```
+
+Use this signature to compare it with a list of magic numbers - http://www.garykessler.net/library/file_sigs.html
+
 
 ## Related
 
