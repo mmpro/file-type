@@ -4,6 +4,60 @@ module.exports = function (buf) {
 		return null;
 	}
 
+
+	// File from vi (.vim) - text - (4d 79 20) 74 65 73 74
+	if (buf[0] === 0x4d && buf[1] === 0x79 && buf[2] === 0x20 && buf[3] === 0x74 && buf[4] === 0x65 && buf[5] === 0x73 && buf[6] === 0x74 ||
+			buf[0] === 0x74 && buf[1] === 0x65 && buf[2] === 0x73 && buf[3] === 0x74) {
+		return {
+			ext: 'vim',
+			mime: 'text/plain'
+		};
+	}
+
+
+	// MOV with missing MOOV atom at the beginning 00 00 00 08 77 69 64 65 00 03
+	if (buf[0] === 0x00 && buf[1] === 0x00 && buf[2] === 0x00 && buf[3] === 0x08 && buf[4] === 0x77 && buf[5] === 0x69 && buf[6] === 0x64 && buf[7] === 0x65) {
+		return {
+			ext: 'mov',
+			mime: 'video/quicktime',
+			info: 'wide' // Byte order
+		};
+	}
+
+
+	if (buf[0] === 0x00 && buf[1] === 0x04 && buf[2] === 0x00 && buf[3] === 0x00 && buf[4] === 0x66 && buf[5] === 0x72 && buf[6] === 0x65 && buf[7] === 0x65 ) {
+		return {
+			ext: 'mov',
+			mime: 'video/quicktime',
+			info: 'free' // Byte order
+		};
+	}
+
+
+
+	if (buf[0] === 0x57 && buf[1] === 0x45 && buf[2] === 0x42 && buf[3] === 0x56 && buf[4] === 0x54 && buf[5] === 0x54) {
+		return {
+			ext: 'vtt',
+			mime: 'text/plain'
+		};
+	}
+
+	if (buf[0] === 0xEF && buf[1] === 0xBB && buf[2] === 0xBF && buf[3] === 0x57 && buf[4] === 0x45 && buf[5] === 0x42 && buf[6] === 0x56 && buf[7] === 0x54 && buf[8] === 0x54) {
+		return {
+			ext: 'vtt',
+			mime: 'text/plain'
+		};
+	}
+
+
+	if (buf[0] === 0x31 && buf[1] === 0x0d && buf[2] === 0x0a && buf[3] === 0x30 && buf[4] === 0x30 && buf[5] === 0x3a && buf[6] === 0x30) {
+		return {
+			ext: 'srt',
+			mime: 'text/plain'
+		};
+	}
+
+
 	if (buf[0] === 0xC5 && buf[1] === 0xD0 && buf[2] === 0xD3 && buf[3] === 0xC6) {
 		return {
 			ext: 'eps',
