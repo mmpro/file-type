@@ -67,7 +67,8 @@ const types = [
 	'rpm',
 	'Z',
 	'lz',
-	'msi'
+	'msi',
+	'mxf'
 ];
 
 const names = {
