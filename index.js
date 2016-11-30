@@ -4,39 +4,6 @@ module.exports = function (buf) {
 		return null;
 	}
 
-  // Office 50 4b 03 04 14 00 06 00 08 00 00 00 21 00 3b 48 8e 40 69 01 00 00 c4 04 00 00 13 00 08 02 5b 43 6f 6e 74 65 6e 74 5f 54 79 70 65 73 5d 2e 78 6d 6c 20 ... >
-  // Excel XLSX - buf [14] 3b 48 8e 40 69
-
-  if (buf[0] === 0x50 && buf[1] === 0x4b && buf[2] === 0x03 && buf[3] === 0x04 && buf[4] === 0x14 && buf[5] === 0x00 && buf[6] === 0x06 && buf[7] === 0x00
-    && buf[14] === 0x3b && buf[15] === 0x48 && buf[16] === 0x8e && buf[17] === 0x40 && buf[18] === 0x69) {
-    return {
-      ext: 'xlsx',
-      mime: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
-    };
-  }
-
-  // Office 50 4b 03 04 14 00 06 00 08 00 00 00 21 00 b0 70 9b ba a6 01 00 00 84 0a 00 00 13 00 08 02 5b 43 6f 6e 74 65 6e 74 5f 54 79 70 65 73 5d 2e 78 6d 6c 20 ... >
-  // Word DOCX - buf [14]  b0 70 9b ba a6
-  if (buf[0] === 0x50 && buf[1] === 0x4b && buf[2] === 0x03 && buf[3] === 0x04 && buf[4] === 0x14 && buf[5] === 0x00 && buf[6] === 0x06 && buf[7] === 0x00
-    && buf[14] === 0xb0 && buf[15] === 0x70 && buf[16] === 0x9b && buf[17] === 0xba && buf[18] === 0xa6) {
-    return {
-      ext: 'docx',
-      mime: 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'
-    };
-  }
-
-
-  // Office 50 4b 03 04 14 00 06 00 08 00 00 00 21 00 0b 11 0c 97 c7 01 00 00 f6 0f 00 00 13 00 08 02 5b 43 6f 6e 74 65 6e 74 5f 54 79 70 65 73 5d 2e 78 6d 6c 20 ... >  // Excel XLSX - buf [14] 3b 48 8e 40 69
-  // Powerpoint PPTX - buf [14] 0b 11 0c 97 c7 01
-  if (buf[0] === 0x50 && buf[1] === 0x4b && buf[2] === 0x03 && buf[3] === 0x04 && buf[4] === 0x14 && buf[5] === 0x00 && buf[6] === 0x06 && buf[7] === 0x00
-    && buf[14] === 0x0b && buf[15] === 0x11 && buf[16] === 0x0c && buf[17] === 0x97 && buf[18] === 0xc7) {
-    return {
-      ext: 'pptx',
-      mime: 'application/vnd.openxmlformats-officedocument.presentationml.presentation'
-    };
-  }
-
-
 	// File from vi (.vim) - text - (4d 79 20) 74 65 73 74
 	if (buf[0] === 0x4d && buf[1] === 0x79 && buf[2] === 0x20 && buf[3] === 0x74 && buf[4] === 0x65 && buf[5] === 0x73 && buf[6] === 0x74 ||
 			buf[0] === 0x74 && buf[1] === 0x65 && buf[2] === 0x73 && buf[3] === 0x74) {
