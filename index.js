@@ -4,10 +4,10 @@ module.exports = function (buf) {
 		return null;
 	}
 
-	// MPEG TS - https://github.com/devttys0/binwalk/issues/225 | https://en.wikipedia.org/wiki/MPEG_transport_stream
+	// MPEGTS - https://github.com/devttys0/binwalk/issues/225 | https://en.wikipedia.org/wiki/MPEG_transport_stream
   if (buf[4] === 0x47 && buf[5] === 0x40 && buf[6] === 0x00) {
     return {
-      ext: '.ts',
+      ext: 'ts',
       mime: 'video/MP2T'
     };
   }
