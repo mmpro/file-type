@@ -1,3 +1,6 @@
+**3.8.3 - 08.01.2017**
++ added: magic numbers for MPEG TS
+
 **3.8.2 - 08.01.2017**
 + added: magic numbers for aiff
 + added: httpInspector to quickly inspect a remote files

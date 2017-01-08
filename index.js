@@ -4,6 +4,14 @@ module.exports = function (buf) {
 		return null;
 	}
 
+	// MPEG TS - https://github.com/devttys0/binwalk/issues/225 | https://en.wikipedia.org/wiki/MPEG_transport_stream
+  if (buf[4] === 0x47 && buf[5] === 0x40 && buf[6] === 0x00) {
+    return {
+      ext: '.ts',
+      mime: 'video/MP2T'
+    };
+  }
+
 	// http://www.digitalpreservation.gov/formats/fdd/fdd000005.shtml
   if (buf[0] === 0x46 && buf[1] === 0x4F && buf[2] === 0x52 && buf[3] === 0x4D && buf[4] === 0x00) {
     return {
