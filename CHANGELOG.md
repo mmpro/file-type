@@ -1,3 +1,6 @@
+**3.8.4 - 09.01.2017**
++ added: a different variation for SRT
+
 **3.8.3 - 08.01.2017**
 + added: magic numbers for MPEG TS
 

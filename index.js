@@ -65,7 +65,8 @@ module.exports = function (buf) {
 	}
 
 
-	if (buf[0] === 0x31 && buf[1] === 0x0d && buf[2] === 0x0a && buf[3] === 0x30 && buf[4] === 0x30 && buf[5] === 0x3a && buf[6] === 0x30) {
+  if ((buf[0] === 0x31 && buf[1] === 0x0d && buf[2] === 0x0a && buf[3] === 0x30 && buf[4] === 0x30 && buf[5] === 0x3a && buf[6] === 0x30)
+    ||	(buf[0] === 0x31 && buf[1] === 0x0a && buf[3] === 0x30 && buf[4])) {
 		return {
 			ext: 'srt',
 			mime: 'text/plain'
