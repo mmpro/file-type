@@ -64,6 +64,13 @@ module.exports = function (buf) {
 		};
 	}
 
+  if (buf[0] === 0x5b && buf[1] === 53 && buf[2] === 0x63 && buf[3] === 0x72 && buf[4] === 0x69) {
+    return {
+      ext: 'ssa',
+      mime: 'text/plain'
+    };
+  }
+
 
   if ((buf[0] === 0x31 && buf[1] === 0x0d && buf[2] === 0x0a && buf[3] === 0x30 && buf[4] === 0x30 && buf[5] === 0x3a && buf[6] === 0x30)
     ||	(buf[0] === 0x31 && buf[1] === 0x0a && buf[3] === 0x30 && buf[4])) {
