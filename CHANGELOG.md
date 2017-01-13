@@ -1,3 +1,6 @@
+**3.8.5 - 13.01.2017**
++ added: additonal MPEG4 - 00 00 00 1c 66 74 79 70
+
 **3.8.4 - 09.01.2017**
 + added: a different variation for SRT
 + added: detect SSA subtitle files
