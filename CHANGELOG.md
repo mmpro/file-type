@@ -1,3 +1,6 @@
+**3.8.6 - 14.01.2017**
++ added: Apple QuickTime movie (unoptimized) - 00 00 00 01 6d 64 61 74 - mmpro/ac-transcoding-server#114
+
 **3.8.5 - 13.01.2017**
 + added: additonal MPEG4 - 00 00 00 1c 66 74 79 70
 

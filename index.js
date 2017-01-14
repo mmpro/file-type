@@ -48,9 +48,18 @@ module.exports = function (buf) {
 		};
 	}
 
+  // Apple QuickTime movie (unoptimized) - 00 00 00 01 6d 64 61 74 00 00 00 00 82 bb 60 00 00 00 00 00
+  if (buf[0] === 0x00 && buf[1] === 0x00 && buf[2] === 0x00 && buf[3] === 0x01 && buf[4] === 0x6d && buf[5] === 0x64 && buf[6] === 0x61 && buf[7] === 0x74 ) {
+    return {
+      ext: 'mov',
+      mime: 'video/quicktime',
+      name: 'Apple QuickTime movie (unoptimized)' // Byte order
+    };
+  }
 
 
-	if (buf[0] === 0x57 && buf[1] === 0x45 && buf[2] === 0x42 && buf[3] === 0x56 && buf[4] === 0x54 && buf[5] === 0x54) {
+
+  if (buf[0] === 0x57 && buf[1] === 0x45 && buf[2] === 0x42 && buf[3] === 0x56 && buf[4] === 0x54 && buf[5] === 0x54) {
 		return {
 			ext: 'vtt',
 			mime: 'text/plain'
