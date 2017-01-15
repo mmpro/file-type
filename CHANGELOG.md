@@ -1,3 +1,6 @@
+**3.8.8 - 15.01.2017**
++ updated: detect MPEG-TS if file header starts with 47 40
+
 **3.8.7 - 15.01.2017**
 + added: JPEG2000 - 00 00 00 0C 6A 50 20 20 0D 0A 87 0A - related mmpro/ac-transcoding-server#107
 
