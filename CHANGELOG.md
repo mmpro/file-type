@@ -1,3 +1,6 @@
+**3.8.7 - 15.01.2017**
++ added: JPEG2000 - 00 00 00 0C 6A 50 20 20 0D 0A 87 0A - related mmpro/ac-transcoding-server#107
+
 **3.8.6 - 14.01.2017**
 + added: Apple QuickTime movie (unoptimized) - 00 00 00 01 6d 64 61 74 - mmpro/ac-transcoding-server#114
 

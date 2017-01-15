@@ -4,6 +4,16 @@ module.exports = function (buf) {
 		return null;
 	}
 
+	/// JPEG 2000 - https://tools.ietf.org/html/rfc3745
+  // 00 00 00 0C 6A 50 20 20 0D 0A 87 0A
+  if (buf[0] === 0x00 && buf[1] === 0x00 && buf[2] === 0x00 && buf[3] === 0x0C && buf[4] === 0x6A && buf[5] === 0x50 && buf[6] === 0x20 &&
+      buf[7] === 0x20 && buf[8] === 0x0D && buf[9] === 0x0A && buf[10] === 0x87 && buf[11] === 0x0A) {
+    return {
+      ext: 'jp2',
+      mime: 'image/jp2'
+    };
+  }
+
 	// MPEGTS - https://github.com/devttys0/binwalk/issues/225 | https://en.wikipedia.org/wiki/MPEG_transport_stream
   if (buf[4] === 0x47 && buf[5] === 0x40 && buf[6] === 0x00) {
     return {
