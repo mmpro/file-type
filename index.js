@@ -4,6 +4,15 @@ module.exports = function (buf) {
 		return null;
 	}
 
+	// Adobe Indesign 06 06 ed f5 d8 1d 46 e5 bd 31 ef e7 fe 74 b7 1d 44 4f 43 55
+  if (buf[0] === 0x06 && buf[1] === 0x06 && buf[2] === 0xed && buf[3] === 0xf5 && buf[4] === 0xd8 && buf[5] === 0x1d && buf[6] === 0x46 &&
+    buf[7] === 0xe5 && buf[8] === 0xbd && buf[9] === 0x31 && buf[10] === 0xef && buf[11] === 0xe7) {
+    return {
+      ext: 'indd',
+      mime: 'application/x-indesign'
+    };
+  }
+
 	/// JPEG 2000 - https://tools.ietf.org/html/rfc3745
   // 00 00 00 0C 6A 50 20 20 0D 0A 87 0A
   if (buf[0] === 0x00 && buf[1] === 0x00 && buf[2] === 0x00 && buf[3] === 0x0C && buf[4] === 0x6A && buf[5] === 0x50 && buf[6] === 0x20 &&
