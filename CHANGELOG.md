@@ -1,3 +1,6 @@
+**3.8.10 - 21.03.2017**
++ added: another MOV variant with AVCHD/Clip Wrap
+
 **3.8.9 - 10.02.2017**
 + added: Adobe Indesign - 06 06 ed f5 d8 1d 46 e5 bd 31 ef e7 fe 74 b7 1d 44 4f 43 55
 

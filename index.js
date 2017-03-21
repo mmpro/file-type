@@ -78,6 +78,13 @@ module.exports = function (buf) {
     };
   }
 
+  // AVCHD - ClipWrap 2.4.3 // Signature:00 0c 14 d9 ||| 6d 6f 6f 76 00 00 00 6c 6d 76 68 64 00 00 00 00
+  if (buf[4] === 0x6d && buf[5] === 0x6f && buf[6] === 0x6f && buf[7] === 0x76 && buf[8] === 0x00 && buf[9] === 0x00 && buf[10] === 0x00 && buf[11] === 0x6c && buf[12] === 0x6d && buf[13] === 0x76) {
+    return {
+      ext: 'mov',
+      mime: 'video/quicktime',
+    };
+  }
 
 
   if (buf[0] === 0x57 && buf[1] === 0x45 && buf[2] === 0x42 && buf[3] === 0x56 && buf[4] === 0x54 && buf[5] === 0x54) {
@@ -117,6 +124,8 @@ module.exports = function (buf) {
 			mime: 'image/x-eps'
 		};
 	}
+
+
 
 	if (buf[0] === 0x06 && buf[1] === 0x0E && buf[2] === 0x2B && buf[3] === 0x34 && buf[4] === 0x02 && buf[5] === 0x05 && buf[6] === 0x01 && buf[7] === 0x01 && buf[8] === 0x0d && buf[9] === 0x01 && buf[10] === 0x02) {
 		return {
