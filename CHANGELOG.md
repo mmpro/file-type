@@ -1,3 +1,6 @@
+**3.8.11 - 30.03.2017**
++ added: isom/mp4 compatible
+
 **3.8.10 - 21.03.2017**
 + added: another MOV variant with AVCHD/Clip Wrap
 
