@@ -99,7 +99,7 @@ module.exports = function (buf) {
     return {
       ext: 'mov',
       mime: 'video/quicktime',
-      name: 'Apple QuickTime movie (unoptimized)' // Byte order
+      info: 'Apple QuickTime movie (unoptimized)' // Byte order
     };
   }
 
