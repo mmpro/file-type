@@ -146,7 +146,7 @@ for(var x = 0; x < 20; x++) {
 }
 ```
 
-Use this signature to compare it with a list of magic numbers - http://www.garykessler.net/library/file_sigs.html
+Use this signature to compare it with a list of magic numbers - see below for sources
 
 ## Test local files
 Use the fileInspector.js to test local files. Please edit the file and add your fileName and then call:
@@ -156,6 +156,10 @@ node fileInspector.js
 Result: 
 DETECTED { ext: 'vtt', mime: 'text/plain' }
 ```
+
+## Magic Number lists and databases
++ http://www.garykessler.net/library/file_sigs.html
++ http://tool.lu/magicbytes/
 
 
 ## Related

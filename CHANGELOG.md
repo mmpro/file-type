@@ -1,3 +1,6 @@
+**3.8.12 - 11.06.2017**
++ added: aac (MPEG-2 and MPEG-4)
+
 **3.8.11 - 30.03.2017**
 + added: isom/mp4 compatible
 

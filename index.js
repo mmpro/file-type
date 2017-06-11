@@ -4,6 +4,22 @@ module.exports = function (buf) {
 		return null;
 	}
 
+  // ff f1 - AAC MPEG-4 Advanced Audio Coding (AAC) Low Complexity (LC) audio file
+  if (buf[0] === 0xff && buf[1] === 0xf1) {
+    return {
+      ext: 'aac',
+      mime: 'audio/aac',
+      info: 'mpeg4'
+    };
+	}
+	// ff f9 - AAC MPEG-2 Advanced Audio Coding (AAC) Low Complexity (LC) audio file
+  if (buf[0] === 0xff && buf[1] === 0xf9) {
+    return {
+      ext: 'aac',
+      mime: 'audio/aac',
+      info: 'mpeg2'
+    };
+  }
 	// ISOM - MP4 compatible 00 00 00 (14|28) 66 74 79 70 69 73 6F 6D - Source: http://tool.lu/magicbytes/
   if (buf[4] === 0x66 && buf[5] === 0x74 && buf[6] === 0x79 && buf[7] === 0x70 && buf[8] === 0x69 && buf[9] === 0x73 && buf[10] === 0x6F && buf[11] === 0x6D) {
     return {
