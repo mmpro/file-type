@@ -1,3 +1,7 @@
+**3.8.13 - 06.07.2017**
++ added: MPEG ADTS - related mmpro/ac-transcoding-server#142, mmpro/ac-transcoding-server#143, mmpro/ac-transcoding-server#144, mmpro/ac-transcoding-server#145
++ added: PXM file - related mmpro/ac-transcoding-server#136
+
 **3.8.12 - 11.06.2017**
 + added: aac (MPEG-2 and MPEG-4)
 

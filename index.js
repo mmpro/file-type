@@ -4,6 +4,26 @@ module.exports = function (buf) {
 		return null;
 	}
 
+  // 50 58 4d 44 4d 45 54 - PXM - Pixelmator
+  // https://github.com/iJunkie22/libpxm/blob/master/pxm-spec.md
+  if (buf[0] === 0x50 && buf[1] === 0x58 && buf[2] === 0x4d && buf[3] === 0x44 && buf[4] === 0x4d && buf[5] === 0x45 && buf[6] === 0x54) {
+    return {
+      ext: 'pxm',
+      mime: 'application/x-pixelmator',
+      info: 'Pixelmator'
+    };
+  }
+
+  // ff fa XXXXXXXXX - MPEG ADTS, layer III, v1, 256 kbps, 44.1 kHz, JntStereo
+  // https://gist.github.com/navinpai/983632
+  if (buf[0] === 0xff && buf[1] === 0xfa) {
+    return {
+      ext: 'mp3',
+      mime: 'audio/mpeg',
+      info: 'MPEG ADTS, layer III, v1'
+    };
+  }
+
   // ff f1 - AAC MPEG-4 Advanced Audio Coding (AAC) Low Complexity (LC) audio file
   if (buf[0] === 0xff && buf[1] === 0xf1) {
     return {

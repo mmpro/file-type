@@ -160,7 +160,7 @@ DETECTED { ext: 'vtt', mime: 'text/plain' }
 ## Magic Number lists and databases
 + http://www.garykessler.net/library/file_sigs.html
 + http://tool.lu/magicbytes/
-
++ https://gist.github.com/navinpai/983632
 
 ## Related
 
