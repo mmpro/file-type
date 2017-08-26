@@ -4,6 +4,17 @@ module.exports = function (buf) {
 		return null;
 	}
 
+	// 00 1f 01 34 75 72 6e 3a 73 63 68 65 6d 61 73 2d 70 72 6f 66
+	// RealTimeMetaCameraMeta.xsd - Sony PMW-EX
+  if (buf[0] === 0x00 && buf[1] === 0x1f && buf[2] === 0x01 && buf[3] === 0x34 && buf[4] === 0x75 && buf[5] === 0x72 && buf[6] === 0x6e
+    	&& buf[7] === 0x3a && buf[8] === 0x73 && buf[9] === 0x63 && buf[10] === 0x68) {
+    return {
+      ext: 'xsd',
+      mime: 'text/xml',
+      info: 'Sony PMV-EX Camera Metadata'
+    };
+  }
+
   // 50 58 4d 44 4d 45 54 - PXM - Pixelmator
   // https://github.com/iJunkie22/libpxm/blob/master/pxm-spec.md
   if (buf[0] === 0x50 && buf[1] === 0x58 && buf[2] === 0x4d && buf[3] === 0x44 && buf[4] === 0x4d && buf[5] === 0x45 && buf[6] === 0x54) {
