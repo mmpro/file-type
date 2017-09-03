@@ -174,10 +174,10 @@ module.exports = function (buf) {
     };
   }
 
-	// ef bb bf 31 0d 0a 30 30
+	// ef bb bf 31 0d 0a 30
   if ((buf[0] === 0x31 && buf[1] === 0x0d && buf[2] === 0x0a && buf[3] === 0x30 && buf[4] === 0x30 && buf[5] === 0x3a && buf[6] === 0x30)
     ||	(buf[0] === 0x31 && buf[1] === 0x0a && buf[3] === 0x30)
-		|| (buf[0] === 0xef && buf[1] === 0xbb && buf[2] === 0xbf && buf[4] === 31 && buf[5] === 0x0d && buf[6] === 0x0a)) {
+		|| (buf[0] === 0xef && buf[1] === 0xbb && buf[2] === 0xbf && buf[3] === 0x31 && buf[4] === 0x0d && buf[5] === 0x0a)) {
 		return {
 			ext: 'srt',
 			mime: 'text/plain'
