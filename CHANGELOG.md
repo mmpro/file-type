@@ -1,3 +1,6 @@
+**3.8.14 - 21.09.2017**
++ added: RED Redcode RAW
+
 **3.8.13 - 06.07.2017**
 + added: MPEG ADTS - related mmpro/ac-transcoding-server#142, mmpro/ac-transcoding-server#143, mmpro/ac-transcoding-server#144, mmpro/ac-transcoding-server#145
 + added: PXM file - related mmpro/ac-transcoding-server#136

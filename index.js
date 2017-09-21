@@ -4,6 +4,16 @@ module.exports = function (buf) {
 		return null;
 	}
 
+  // Signature: 00 00 04 XX 52 45 44 32 05 10 52 32 04 01 0c 00 -> RED REDCODE RAW- R3d
+  if (buf[0] === 0x00 && buf[1] === 0x00 && buf[2] === 0x04
+		&& buf[4] === 0x52 && buf[5] === 0x45 && buf[6] === 0x44 && buf[7] === 0x32 && buf[8] === 0x05 && buf[9] === 0x10 && buf[10] === 0x52 && buf[11] === 0x32) {
+    return {
+      ext: 'r3d',
+      mime: 'application/octet-stream',
+      info: 'RED Redcode Raw'
+    };
+  }
+
 	// 00 1f 01 34 75 72 6e 3a 73 63 68 65 6d 61 73 2d 70 72 6f 66
 	// RealTimeMetaCameraMeta.xsd - Sony PMW-EX
   if (buf[0] === 0x00 && buf[1] === 0x1f && buf[2] === 0x01 && buf[3] === 0x34 && buf[4] === 0x75 && buf[5] === 0x72 && buf[6] === 0x6e
