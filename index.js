@@ -4,6 +4,19 @@ module.exports = function (buf) {
 		return null;
 	}
 
+	// 5a 4f 4f 4d 20 48 36 20 70 72 6a 65 63 -> Zoom H6 Project File
+	// http://www.dvinfo.net/forum/all-things-audio/525930-zoom-h6-file-name.html
+	// http://fileformats.archiveteam.org/wiki/Heroglyph_Project_Format
+  if (buf[0] === 0x5a && buf[1] === 0x4f && buf[2] === 0x4f && buf[3] === 0x4d
+    && buf[4] === 0x20 && buf[5] === 0x48 && buf[6] === 0x36 && buf[7] === 0x20 && buf[8] === 0x70 && buf[9] === 0x72 && buf[10] === 0x6a && buf[11] === 0x65 && buf[12] === 0x63) {
+    return {
+      ext: 'hprj',
+      mime: 'application/octet-stream',
+      info: 'Zoom H6 Project File'
+    };
+  }
+
+
   // Signature: 00 00 04 XX 52 45 44 32 05 10 52 32 04 01 0c 00 -> RED REDCODE RAW- R3d
   if (buf[0] === 0x00 && buf[1] === 0x00 && buf[2] === 0x04
 		&& buf[4] === 0x52 && buf[5] === 0x45 && buf[6] === 0x44 && buf[7] === 0x32 && buf[8] === 0x05 && buf[9] === 0x10 && buf[10] === 0x52 && buf[11] === 0x32) {

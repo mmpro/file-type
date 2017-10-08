@@ -1,3 +1,6 @@
+**3.8.15 - 08.10.2017**
++ added: Zoom H6 projectfile (Heroglyph Project Format)
+
 **3.8.14 - 21.09.2017**
 + added: RED Redcode RAW
 
