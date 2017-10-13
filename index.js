@@ -4,6 +4,17 @@ module.exports = function (buf) {
 		return null;
 	}
 
+	// 25 21 50 53 2D 41 64 6F 62 65 2D 33 2E 30 20 45 50 53 46 2D 33 20 30
+	// https://billatnapier.wordpress.com/2013/04/22/magic-numbers-in-files/
+  if (buf[0] === 0x25 && buf[1] === 0x21 && buf[2] === 0x50 && buf[3] === 0x53
+    && buf[4] === 0x2d && buf[5] === 0x41 && buf[6] === 0x64 && buf[7] === 0x6f && buf[8] === 0x62 && buf[9] === 0x65 && buf[10] === 0x2d && buf[11] === 0x33 && buf[12] === 0x2e) {
+    return {
+      ext: 'eps',
+      mime: 'image/x-eps',
+      info: 'Encapsulated PostScript'
+    };
+  }
+
 	// 5a 4f 4f 4d 20 48 36 20 70 72 6a 65 63 -> Zoom H6 Project File
 	// http://www.dvinfo.net/forum/all-things-audio/525930-zoom-h6-file-name.html
 	// http://fileformats.archiveteam.org/wiki/Heroglyph_Project_Format

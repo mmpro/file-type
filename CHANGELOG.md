@@ -1,3 +1,6 @@
+**3.8.16 - 13.10.2017**
++ added: Detect EPS file (and distinguish from PS file)
+
 **3.8.15 - 08.10.2017**
 + added: Zoom H6 projectfile (Heroglyph Project Format)
 
