@@ -142,6 +142,14 @@ module.exports = function (buf) {
     };
   }
 
+  // AIFC - Compressed AIFF
+  if (buf[0] === 0x46 && buf[1] === 0x4F && buf[2] === 0x52 && buf[3] === 0x4D && buf[4] === 0x03) {
+    return {
+      ext: 'aifc',
+      mime: 'audio/aiff'
+    };
+  }
+
 	// File from vi (.vim) - text - (4d 79 20) 74 65 73 74
 	if (buf[0] === 0x4d && buf[1] === 0x79 && buf[2] === 0x20 && buf[3] === 0x74 && buf[4] === 0x65 && buf[5] === 0x73 && buf[6] === 0x74 ||
 			buf[0] === 0x74 && buf[1] === 0x65 && buf[2] === 0x73 && buf[3] === 0x74) {
