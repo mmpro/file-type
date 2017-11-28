@@ -170,7 +170,10 @@ module.exports = function (buf) {
 	}
 
 
-	if (buf[0] === 0x00 && buf[1] === 0x04 && buf[2] === 0x00 && buf[3] === 0x00 && buf[4] === 0x66 && buf[5] === 0x72 && buf[6] === 0x65 && buf[7] === 0x65 ) {
+	// MOV with free byte order - https://www.loc.gov/preservation/digital/formats/fdd/fdd000052.shtml
+	// xx xx xx xx 66 72 65 65
+	// still thinking that pos 0 is 0x00
+	if (buf[0] === 0x00 && buf[4] === 0x66 && buf[5] === 0x72 && buf[6] === 0x65 && buf[7] === 0x65 ) {
 		return {
 			ext: 'mov',
 			mime: 'video/quicktime',
