@@ -4,6 +4,17 @@ module.exports = function (buf) {
 		return null;
 	}
 
+	// 46 55 4a 49 46 49 4c 4d 43 43 44 2d 52 41 57 20
+	// FujiFilm RAW (e.g. XT-20) - https://libopenraw.freedesktop.org/wiki/Fuji_RAF/
+  if (buf[0] === 0x46 && buf[1] === 0x55 && buf[2] === 0x4a && buf[3] === 0x49
+    && buf[4] === 0x46 && buf[5] === 0x49 && buf[6] === 0x4c && buf[7] === 0x4d && buf[8] === 0x43 && buf[9] === 0x43 && buf[10] === 0x44 && buf[11] === 0x2d && buf[12] === 0x52) {
+    return {
+      ext: 'raf',
+      mime: 'image/x-fuji-raf',
+      info: 'FujiFilm Raw'
+    };
+  }
+
 	// 25 21 50 53 2D 41 64 6F 62 65 2D 33 2E 30 20 45 50 53 46 2D 33 20 30
 	// https://billatnapier.wordpress.com/2013/04/22/magic-numbers-in-files/
   if (buf[0] === 0x25 && buf[1] === 0x21 && buf[2] === 0x50 && buf[3] === 0x53
