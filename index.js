@@ -134,7 +134,7 @@ module.exports = function (buf) {
     };
   }
 
-	// http://www.digitalpreservation.gov/formats/fdd/fdd000005.shtml
+	// AIFF - 46 4F 52 4D 00- http://www.digitalpreservation.gov/formats/fdd/fdd000005.shtml
   if (buf[0] === 0x46 && buf[1] === 0x4F && buf[2] === 0x52 && buf[3] === 0x4D && buf[4] === 0x00) {
     return {
       ext: 'aiff',
@@ -142,8 +142,8 @@ module.exports = function (buf) {
     };
   }
 
-  // AIFC - Compressed AIFF
-  if (buf[0] === 0x46 && buf[1] === 0x4F && buf[2] === 0x52 && buf[3] === 0x4D && buf[4] === 0x03) {
+  // AIFC - Compressed AIFF -  46 4F 52 4D ?? ?? ?? ?? 41 49 46 46
+  if (buf[0] === 0x46 && buf[1] === 0x4F && buf[2] === 0x52 && buf[3] === 0x4D && buf[8] === 0x41 && buf[9] === 0x49 && buf[10] === 0x46 && buf[11] === 0x46) {
     return {
       ext: 'aifc',
       mime: 'audio/aiff'

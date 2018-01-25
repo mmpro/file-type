@@ -1,3 +1,6 @@
+**3.8.20 - 25.01.2018**
++ updated: Detect AIFC format 
+
 **3.8.16 - 13.10.2017**
 + added: Detect EPS file (and distinguish from PS file)
 
