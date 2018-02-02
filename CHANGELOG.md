@@ -1,3 +1,6 @@
+**3.8.21 - 02.02.2018**
++ updated: Detect ISOM HVC1 MP4 format 
+
 **3.8.20 - 25.01.2018**
 + updated: Detect AIFC format 
 
