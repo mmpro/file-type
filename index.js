@@ -112,7 +112,17 @@ module.exports = function (buf) {
       mime: 'video/mp4',
       info: 'isom, hvc1'
     };
-  }
+	}
+	// 00 00 00 24 66 74 79 70 4d ->  ftypM4VHM4VHM4V M4A mp42isom��moovlmvhd	
+	if (buf[4] === 0x66 && buf[5] === 0x74 && buf[6] === 0x79 && buf[7] === 0x70 && buf[8] === 0x4D) {
+    return {
+      ext: 'm4v',
+      mime: 'video/mp4',
+      info: 'isom, mvhd'
+    };
+	}
+
+
 
 	// Adobe Indesign 06 06 ed f5 d8 1d 46 e5 bd 31 ef e7 fe 74 b7 1d 44 4f 43 55
   if (buf[0] === 0x06 && buf[1] === 0x06 && buf[2] === 0xed && buf[3] === 0xf5 && buf[4] === 0xd8 && buf[5] === 0x1d && buf[6] === 0x46 &&
