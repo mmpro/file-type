@@ -1,6 +1,6 @@
 {
   "name": "file-type",
-  "version": "3.8.21",
+  "version": "3.8.22",
   "description": "Detect the file type of a Buffer/Uint8Array",
   "license": "MIT",
   "repository": "sindresorhus/file-type",
@@ -95,9 +95,9 @@
     "msi"
   ],
   "devDependencies": {
-    "ava": "*",
+    "ava": "^0.25.0",
+    "lodash": "^4.17.10",
     "read-chunk": "^2.1.0",
-    "xo": "*",
-    "lodash": "^4.16.2"
+    "xo": "^0.21.1"
   }
 }
