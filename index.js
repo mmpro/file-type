@@ -113,8 +113,9 @@ module.exports = function (buf) {
       info: 'isom, hvc1'
     };
 	}
-	// 00 00 00 24 66 74 79 70 4d ->  ftypM4VHM4VHM4V M4A mp42isom��moovlmvhd	
-	if (buf[4] === 0x66 && buf[5] === 0x74 && buf[6] === 0x79 && buf[7] === 0x70 && buf[8] === 0x4D) {
+	// 00 00 00 24 66 74 79 70 4d ->  ftypM4VHM4VHM4V M4A mp42isom��moovlmvhd
+	// see also below L438
+	if (buf[4] === 0x66 && buf[5] === 0x74 && buf[6] === 0x79 && buf[7] === 0x70 && buf[8] === 0x4D && buf[9] === 0x34 && buf[10] === 0x56) {
     return {
       ext: 'm4v',
       mime: 'video/mp4',
