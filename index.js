@@ -4,6 +4,15 @@ module.exports = function (buf) {
 		return null;
 	}
 
+	// 01 00 89 f7 47 1f ff 1e ff
+	// This is a MPEG TS - use 47 1f ff
+	if (buf[4] === 0x47 && buf[5] === 0x1f && buf[6] === 0xff) {
+		return {
+			ext: 'ts',
+			mime: 'video/MP2T'
+		};
+	}
+
 	// 46 55 4a 49 46 49 4c 4d 43 43 44 2d 52 41 57 20
 	// FujiFilm RAW (e.g. XT-20) - https://libopenraw.freedesktop.org/wiki/Fuji_RAF/
   if (buf[0] === 0x46 && buf[1] === 0x55 && buf[2] === 0x4a && buf[3] === 0x49
