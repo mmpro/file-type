@@ -4,6 +4,16 @@ module.exports = function (buf) {
 		return null;
 	}
 
+
+	// 49 49 55 00 18 00 00 00 88 e7 74
+	// This is a Panasonic RW 2 file - quite similar to TIF but with 55 at pos 2
+	if (buf[0] === 0x49 && buf[1] === 0x49 && buf[2] === 0x55 && buf[3] === 0x0 && buf[4] === 0x18) {
+		return {
+			ext: 'rw2',
+			mime: 'image/x-panasonic-rw2'
+		};
+	}
+
 	// 01 00 89 f7 47 1f ff 1e ff
 	// This is a MPEG TS - use 47 1f ff
 	if (buf[4] === 0x47 && buf[5] === 0x1f && buf[6] === 0xff) {
