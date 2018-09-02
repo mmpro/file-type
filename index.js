@@ -4,6 +4,36 @@ module.exports = function (buf) {
 		return null;
 	}
 
+		// START TODO PHASE - these types are still under observation
+
+	// 4d 4d 2a 00
+	// Nikon NEF Raw
+	if (buf[0] === 0x4d && buf[1] === 0x4d && buf[2] === 0x00 && buf[3] === 0x2a) {
+		return {
+			ext: 'nef',
+			mime: 'image/x-nikon-nef'
+		};
+	}
+
+	// 49 49 2a 00
+	// Sony SR2 RAW
+	if (buf[0] === 0x49 && buf[1] === 0x49 && buf[2] === 0x2a && buf[3] === 0x00) {
+		return {
+			ext: 'sr2',
+			mime: 'image/x-sony-sr2'
+		};
+	}
+
+	// 4d 4d 00 - at pos 86 the word "SAMSUNG"
+	// Samsung RAW - SRW file
+	if (buf[0] === 0x4d && buf[1] === 0x4d && buf[2] === 0x00 && buf[86] === 0x53) {
+		return {
+			ext: 'srw',
+			mime: 'image/x-samsung-srw'
+		};
+	}
+
+	// END TODO PHASE
 
 	// 49 49 55 00 18 00 00 00 88 e7 74
 	// This is a Panasonic RW 2 file - quite similar to TIF but with 55 at pos 2
