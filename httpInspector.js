@@ -5,6 +5,9 @@ const fileType = require('./');
 
 const argv = require('minimist')(process.argv.slice(2));
 const url = _.get(argv, 'url')
+let showSignature = _.get(argv, 'showSignature')
+const signatureLength = _.get(argv, 'signatureLength', 252)
+const startPos = _.get(argv, 'startPos')
 
 http.get(url, res => {
    res.once('data', result => {
@@ -14,26 +17,29 @@ http.get(url, res => {
 
             // determine signature so we can compare it with magic number lists and add it to file-type
             let signature = "";
-            for(let x = 0; x < 720; x++) {
+            for(let x = 0; x < signatureLength; x++) {
              if(!_.isNil(result[x])) signature += _.padStart(result[x].toString(16),2,0) + ' ';
             }
 
-     if (!detectedFileType) {
+      if (!detectedFileType) {
         console.log("COULD NOT DETECT fileType for %s - here's the signature", fileName);
-        console.log(signature)
-        console.log(_.repeat('-', 3))
-        console.log(result.toString())
-        console.log(_.repeat('-', 60))
+        showSignature = true
       }
       else {
         console.log("DETECTED", detectedFileType);
-        if (_.get(argv, 'showSignature')) {
-          console.log(_.repeat('-', 3))
-          console.log(signature)
-          console.log(_.repeat('-', 3))
-          console.log(result.toString())
-          console.log(_.repeat('-', 60))
-        }
       }
+
+      if (showSignature) {
+        console.log(_.repeat('-', 3))
+        console.log(signature)
+        console.log(_.repeat('-', 3))
+        console.log(result.toString().substr(0, signatureLength))
+        console.log(_.repeat('-', 60))
+      }
+      if (startPos) {
+        console.log('%s starts at position %s', startPos, signature.indexOf(startPos)/3)
+      }
+      
+
    })
 })
