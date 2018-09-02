@@ -14,6 +14,15 @@ $ npm install --save file-type
 
 ## Usage
 
+### CLI
+```
+node fileInspector --file PATH_TO_FILE [--showSignature]
+OR
+node httpInspector --url URL_TO_FILE [--showSignature]
+```
+If you use optional parameter "showSignature" the signature is shown even if the file type is detected.
+
+
 ##### Node.js
 
 ```js
@@ -161,6 +170,7 @@ DETECTED { ext: 'vtt', mime: 'text/plain' }
 + http://www.garykessler.net/library/file_sigs.html
 + http://tool.lu/magicbytes/
 + https://gist.github.com/navinpai/983632
++ http://lclevy.free.fr/raw/
 
 ## Related
 
