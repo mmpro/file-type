@@ -15,9 +15,10 @@ module.exports = function (buf) {
 		};
 	}
 
-	// 49 49 2a 00
+	// 49 49 2a 00 - TIFF
+	// 49 49 2a 00 - at pos 262 the word "SONY" 53 4f 4e 59
 	// Sony SR2 RAW
-	if (buf[0] === 0x49 && buf[1] === 0x49 && buf[2] === 0x2a && buf[3] === 0x00) {
+	if (buf[0] === 0x49 && buf[1] === 0x49 && buf[2] === 0x2a && buf[3] === 0x00 && buf[262] === 0x53 && buf[263] === 0x4f && buf[264] === 0x4e && buf[265] === 0x59) {
 		return {
 			ext: 'sr2',
 			mime: 'image/x-sony-sr2'
@@ -362,6 +363,7 @@ module.exports = function (buf) {
 		};
 	}
 
+	// 49 49 2a 00 - TIFF
 	if ((buf[0] === 0x49 && buf[1] === 0x49 && buf[2] === 0x2A && buf[3] === 0x0) || (buf[0] === 0x4D && buf[1] === 0x4D && buf[2] === 0x0 && buf[3] === 0x2A)) {
 		return {
 			ext: 'tif',
