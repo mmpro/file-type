@@ -6,7 +6,7 @@ const fileType = require('./');
 const argv = require('minimist')(process.argv.slice(2));
 const url = _.get(argv, 'url')
 let showSignature = _.get(argv, 'showSignature')
-const signatureLength = _.get(argv, 'signatureLength', 252)
+const signatureLength = _.get(argv, 'signatureLength', 272)
 const startPos = _.get(argv, 'startPos')
 
 http.get(url, res => {
@@ -15,11 +15,11 @@ http.get(url, res => {
 
      let detectedFileType = fileType(result);
 
-            // determine signature so we can compare it with magic number lists and add it to file-type
-            let signature = "";
-            for(let x = 0; x < signatureLength; x++) {
-             if(!_.isNil(result[x])) signature += _.padStart(result[x].toString(16),2,0) + ' ';
-            }
+      // determine signature so we can compare it with magic number lists and add it to file-type
+      let signature = "";
+      for(let x = 0; x < signatureLength; x++) {
+        if(!_.isNil(result[x])) signature += _.padStart(result[x].toString(16),2,0) + ' ';
+      }
 
       if (!detectedFileType) {
         console.log("COULD NOT DETECT fileType for %s - here's the signature", fileName);
