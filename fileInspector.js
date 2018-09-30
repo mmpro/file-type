@@ -9,7 +9,7 @@ let showSignature = _.get(argv, 'showSignature')
 const signatureLength = _.get(argv, 'signatureLength', 272)
 const startPos = _.get(argv, 'startPos')
 
-readChunk(fileName, 0, 272)
+readChunk(fileName, 0, signatureLength)
   .then((result) =>{
 
     let detectedFileType = fileType(result);
