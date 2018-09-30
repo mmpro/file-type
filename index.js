@@ -4,11 +4,14 @@ module.exports = function (buf) {
 		return null;
 	}
 
-		// START TODO PHASE - these types are still under observation
 
-	// 4d 4d 2a 00
-	// Nikon NEF Raw
-	if (buf[0] === 0x4d && buf[1] === 0x4d && buf[2] === 0x00 && buf[3] === 0x2a) {
+	// START TODO PHASE - these types are still under observation
+	//console.log(buf.indexOf('NIKON'))
+
+	// 4d 4d 2a 00 (TIFF)
+	 // Nikon NEF Raw - is a TIFF with Maker note (NIKON) at offset (~300+)
+	 // http://nrl.northumbria.ac.uk/15648/1/CM0541_Kalms_ResearchPaper_SKIMA2012_30-07-2012.pdf
+	if (((buf[0] === 0x49 && buf[1] === 0x49 && buf[2] === 0x2A && buf[3] === 0x0) || (buf[0] === 0x4D && buf[1] === 0x4D && buf[2] === 0x0 && buf[3] === 0x2A)) && buf.indexOf('NIKON') > 300) {
 		return {
 			ext: 'nef',
 			mime: 'image/x-nikon-nef'
