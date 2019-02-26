@@ -8,7 +8,7 @@ module.exports = function (buf) {
 	if (buf[0] === 0x3c && buf[1] ===0x73 && buf[2] === 0x76 && buf[3] === 0x67) {
 		return {
 			ext: 'svg',
-			mime: ' image/svg+xml'
+			mime: 'image/svg+xml'
 		};
 	}
 
