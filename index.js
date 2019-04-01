@@ -4,11 +4,20 @@ module.exports = function (buf) {
 		return null;
 	}
 
+
 	// 3c 73 76 67 20 76 65 72 73 69 6f 6e - <svg version | Must be in the buf somewhere
 	if (buf.includes('<svg version')) {
 		return {
 			ext: 'svg',
 			mime: 'image/svg+xml'
+		}
+	}
+
+	// project.aegraphic
+	if (buf.includes('project.aegraphic')) {
+		return {
+			ext: 'mogrt',
+			mime: 'application/octet-stream'
 		}
 	}
 
@@ -428,12 +437,14 @@ module.exports = function (buf) {
 		};
 	}
 
+	
 	if (buf[0] === 0x50 && buf[1] === 0x4B && (buf[2] === 0x3 || buf[2] === 0x5 || buf[2] === 0x7) && (buf[3] === 0x4 || buf[3] === 0x6 || buf[3] === 0x8)) {
 		return {
 			ext: 'zip',
 			mime: 'application/zip'
 		};
 	}
+	
 
 	if (buf[257] === 0x75 && buf[258] === 0x73 && buf[259] === 0x74 && buf[260] === 0x61 && buf[261] === 0x72) {
 		return {
