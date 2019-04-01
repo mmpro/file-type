@@ -4,9 +4,10 @@ module.exports = function (buf) {
 		return null;
 	}
 
-
+	// SVG can have multiple headers
 	// 3c 73 76 67 20 76 65 72 73 69 6f 6e - <svg version | Must be in the buf somewhere
-	if (buf.includes('<svg version')) {
+	// <!DOCTYPE svg
+	if (buf.includes('<svg version') || buf.includes('<!DOCTYPE svg')) {
 		return {
 			ext: 'svg',
 			mime: 'image/svg+xml'
