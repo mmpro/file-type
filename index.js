@@ -4,6 +4,14 @@ module.exports = function (buf) {
 		return null;
 	}
 
+	// 3c 73 76 67 20 76 65 72 73 69 6f 6e - <svg version | Must be in the buf somewhere
+	if (buf.includes('<svg version')) {
+		return {
+			ext: 'svg',
+			mime: 'image/svg+xml'
+		}
+	}
+
 	// 3c 73 76 67 SVG -> <svg
 	if (buf[0] === 0x3c && buf[1] ===0x73 && buf[2] === 0x76 && buf[3] === 0x67) {
 		return {
