@@ -1,9 +1,8 @@
 const _ = require('lodash');
-
 const readChunk = require('read-chunk');
+const argv = require('minimist')(process.argv.slice(2));
 const fileType = require('./');
 
-const argv = require('minimist')(process.argv.slice(2));
 const fileName = _.get(argv, 'file')
 let showSignature = _.get(argv, 'showSignature')
 const signatureLength = _.get(argv, 'signatureLength', 272)
@@ -12,7 +11,7 @@ const startPos = _.get(argv, 'startPos')
 readChunk(fileName, 0, signatureLength)
   .then((result) =>{
 
-    let detectedFileType = fileType(result);
+    const detectedFileType = fileType(result);
 
     // determine signature so we can compare it with magic number lists and add it to file-type
     let signature = "";

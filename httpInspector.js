@@ -1,9 +1,8 @@
-const _ = require('lodash');
-
 const http = require('https');
+const _ = require('lodash');
+const argv = require('minimist')(process.argv.slice(2));
 const fileType = require('./');
 
-const argv = require('minimist')(process.argv.slice(2));
 const url = _.get(argv, 'url')
 let showSignature = _.get(argv, 'showSignature')
 const signatureLength = _.get(argv, 'signatureLength', 272)
@@ -13,7 +12,7 @@ http.get(url, res => {
    res.once('data', result => {
      res.destroy();
 
-     let detectedFileType = fileType(result);
+     const detectedFileType = fileType(result);
 
       // determine signature so we can compare it with magic number lists and add it to file-type
       let signature = "";
@@ -22,7 +21,7 @@ http.get(url, res => {
       }
 
       if (!detectedFileType) {
-        console.log("COULD NOT DETECT fileType for %s - here's the signature", fileName);
+        console.log("COULD NOT DETECT fileType for %s - here's the signature", url);
         showSignature = true
       }
       else {
