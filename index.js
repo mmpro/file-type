@@ -7,7 +7,7 @@ module.exports = function (buf) {
 	// SVG can have multiple headers
 	// 3c 73 76 67 20 76 65 72 73 69 6f 6e - <svg version | Must be in the buf somewhere
 	// <!DOCTYPE svg
-	if (buf.includes('<svg version') || buf.includes('<!DOCTYPE svg')) {
+	if ((buf.includes('<svg') && buf.includes('version=')) || buf.includes('<!DOCTYPE svg')) {
 		return {
 			ext: 'svg',
 			mime: 'image/svg+xml'
@@ -85,8 +85,8 @@ module.exports = function (buf) {
 
 	// 46 55 4a 49 46 49 4c 4d 43 43 44 2d 52 41 57 20
 	// FujiFilm RAW (e.g. XT-20) - https://libopenraw.freedesktop.org/wiki/Fuji_RAF/
-  if (buf[0] === 0x46 && buf[1] === 0x55 && buf[2] === 0x4a && buf[3] === 0x49
-    && buf[4] === 0x46 && buf[5] === 0x49 && buf[6] === 0x4c && buf[7] === 0x4d && buf[8] === 0x43 && buf[9] === 0x43 && buf[10] === 0x44 && buf[11] === 0x2d && buf[12] === 0x52) {
+  if ((buf[0] === 0x46 && buf[1] === 0x55 && buf[2] === 0x4a && buf[3] === 0x49)
+    && (buf[4] === 0x46 && buf[5] === 0x49 && buf[6] === 0x4c && buf[7] === 0x4d && buf[8] === 0x43 && buf[9] === 0x43 && buf[10] === 0x44 && buf[11] === 0x2d && buf[12] === 0x52)) {
     return {
       ext: 'raf',
       mime: 'image/x-fuji-raf',
@@ -96,8 +96,8 @@ module.exports = function (buf) {
 
 	// 25 21 50 53 2D 41 64 6F 62 65 2D 33 2E 30 20 45 50 53 46 2D 33 20 30
 	// https://billatnapier.wordpress.com/2013/04/22/magic-numbers-in-files/
-  if (buf[0] === 0x25 && buf[1] === 0x21 && buf[2] === 0x50 && buf[3] === 0x53
-    && buf[4] === 0x2d && buf[5] === 0x41 && buf[6] === 0x64 && buf[7] === 0x6f && buf[8] === 0x62 && buf[9] === 0x65 && buf[10] === 0x2d && buf[11] === 0x33 && buf[12] === 0x2e) {
+  if ((buf[0] === 0x25 && buf[1] === 0x21 && buf[2] === 0x50 && buf[3] === 0x53)
+    && (buf[4] === 0x2d && buf[5] === 0x41 && buf[6] === 0x64 && buf[7] === 0x6f && buf[8] === 0x62 && buf[9] === 0x65 && buf[10] === 0x2d && buf[11] === 0x33 && buf[12] === 0x2e)) {
     return {
       ext: 'eps',
       mime: 'image/x-eps',
@@ -108,8 +108,8 @@ module.exports = function (buf) {
 	// 5a 4f 4f 4d 20 48 36 20 70 72 6a 65 63 -> Zoom H6 Project File
 	// http://www.dvinfo.net/forum/all-things-audio/525930-zoom-h6-file-name.html
 	// http://fileformats.archiveteam.org/wiki/Heroglyph_Project_Format
-  if (buf[0] === 0x5a && buf[1] === 0x4f && buf[2] === 0x4f && buf[3] === 0x4d
-    && buf[4] === 0x20 && buf[5] === 0x48 && buf[6] === 0x36 && buf[7] === 0x20 && buf[8] === 0x70 && buf[9] === 0x72 && buf[10] === 0x6a && buf[11] === 0x65 && buf[12] === 0x63) {
+  if ((buf[0] === 0x5a && buf[1] === 0x4f && buf[2] === 0x4f && buf[3] === 0x4d)
+    && (buf[4] === 0x20 && buf[5] === 0x48 && buf[6] === 0x36 && buf[7] === 0x20 && buf[8] === 0x70 && buf[9] === 0x72 && buf[10] === 0x6a && buf[11] === 0x65 && buf[12] === 0x63)) {
     return {
       ext: 'hprj',
       mime: 'application/octet-stream',
@@ -119,8 +119,8 @@ module.exports = function (buf) {
 
 
   // Signature: 00 00 04 XX 52 45 44 32 05 10 52 32 04 01 0c 00 -> RED REDCODE RAW- R3d
-  if (buf[0] === 0x00 && buf[1] === 0x00 && buf[2] === 0x04
-		&& buf[4] === 0x52 && buf[5] === 0x45 && buf[6] === 0x44 && buf[7] === 0x32 && buf[8] === 0x05 && buf[9] === 0x10 && buf[10] === 0x52 && buf[11] === 0x32) {
+  if ((buf[0] === 0x00 && buf[1] === 0x00 && buf[2] === 0x04)
+		&& (buf[4] === 0x52 && buf[5] === 0x45 && buf[6] === 0x44 && buf[7] === 0x32 && buf[8] === 0x05 && buf[9] === 0x10 && buf[10] === 0x52 && buf[11] === 0x32)) {
     return {
       ext: 'r3d',
       mime: 'application/octet-stream',
@@ -130,8 +130,8 @@ module.exports = function (buf) {
 
 	// 00 1f 01 34 75 72 6e 3a 73 63 68 65 6d 61 73 2d 70 72 6f 66
 	// RealTimeMetaCameraMeta.xsd - Sony PMW-EX
-  if (buf[0] === 0x00 && buf[1] === 0x1f && buf[2] === 0x01 && buf[3] === 0x34 && buf[4] === 0x75 && buf[5] === 0x72 && buf[6] === 0x6e
-    	&& buf[7] === 0x3a && buf[8] === 0x73 && buf[9] === 0x63 && buf[10] === 0x68) {
+  if ((buf[0] === 0x00 && buf[1] === 0x1f && buf[2] === 0x01 && buf[3] === 0x34 && buf[4] === 0x75 && buf[5] === 0x72 && buf[6] === 0x6e)
+    	&& (buf[7] === 0x3a && buf[8] === 0x73 && buf[9] === 0x63 && buf[10] === 0x68)) {
     return {
       ext: 'xsd',
       mime: 'text/xml',
@@ -250,8 +250,8 @@ module.exports = function (buf) {
   }
 
 	// File from vi (.vim) - text - (4d 79 20) 74 65 73 74
-	if (buf[0] === 0x4d && buf[1] === 0x79 && buf[2] === 0x20 && buf[3] === 0x74 && buf[4] === 0x65 && buf[5] === 0x73 && buf[6] === 0x74 ||
-			buf[0] === 0x74 && buf[1] === 0x65 && buf[2] === 0x73 && buf[3] === 0x74) {
+	if ((buf[0] === 0x4d && buf[1] === 0x79 && buf[2] === 0x20 && buf[3] === 0x74 && buf[4] === 0x65 && buf[5] === 0x73 && buf[6] === 0x74) ||
+			(buf[0] === 0x74 && buf[1] === 0x65 && buf[2] === 0x73 && buf[3] === 0x74)) {
 		return {
 			ext: 'vim',
 			mime: 'text/plain'
