@@ -17,6 +17,7 @@ readChunk(fileName, 0, signatureLength)
     let signature = "";
     for(let x = 0; x < signatureLength; x++) {
       if(!_.isNil(result[x])) signature += _.padStart(result[x].toString(16),2,0) + ' ';
+      //console.log(_.padStart(x,3), _.padStart(result[x].toString(16),2,0), result.toString().substring(x, x+1))
     }
 
     if (!detectedFileType) {
