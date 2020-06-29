@@ -29,6 +29,27 @@ module.exports = function (buf) {
 			mime: 'image/svg+xml'
 		};
 	}
+		
+		// HEIC IMAGE
+		/*
+		'heic': the usual HEIF images
+		'heix': 10bit images, or anything that uses h265 with range extension
+		'hevc', 'hevx': brands for image sequences
+		'heim': multiview
+		'heis': scalable
+		'hevm': multiview sequence
+		'hevs': scalable sequence
+		Extensions
+		.heif, .heifs; .heic, .heics; .avci, .avcs; .avif, .avifs
+		Internet media type	image/heif, image/heif
+		*/
+		if (/(ftyp)\S*(heic|heix|hevc)/.test(buf.toString())) {
+			return {
+				ext: 'heic',
+				mime: 'image/heif',
+				info: 'isom'
+			}
+		}
 
 
 	// START TODO PHASE - these types are still under observation
@@ -174,7 +195,7 @@ module.exports = function (buf) {
       mime: 'audio/aac',
       info: 'mpeg2'
     };
-  }
+	}
 	// ISOM - MP4 compatible 00 00 00 (14|28) 66 74 79 70 69 73 6F 6D - Source: http://tool.lu/magicbytes/
   if (buf[4] === 0x66 && buf[5] === 0x74 && buf[6] === 0x79 && buf[7] === 0x70 && buf[8] === 0x69 && buf[9] === 0x73 && buf[10] === 0x6F && buf[11] === 0x6D) {
     return {
