@@ -54,10 +54,10 @@ module.exports = function (buf) {
 
 	// START TODO PHASE - these types are still under observation
 	//console.log(buf.indexOf('NIKON'))
-
+	
 	// 4d 4d 2a 00 (TIFF)
-	 // Nikon NEF Raw - is a TIFF with Maker note (NIKON) at offset (~300+)
-	 // http://nrl.northumbria.ac.uk/15648/1/CM0541_Kalms_ResearchPaper_SKIMA2012_30-07-2012.pdf
+	// Nikon NEF Raw - is a TIFF with Maker note (NIKON) at offset (~300+)
+	// http://nrl.northumbria.ac.uk/15648/1/CM0541_Kalms_ResearchPaper_SKIMA2012_30-07-2012.pdf
 	if (((buf[0] === 0x49 && buf[1] === 0x49 && buf[2] === 0x2A && buf[3] === 0x0) || (buf[0] === 0x4D && buf[1] === 0x4D && buf[2] === 0x0 && buf[3] === 0x2A)) && buf.indexOf('NIKON') > 300) {
 		return {
 			ext: 'nef',
@@ -151,8 +151,7 @@ module.exports = function (buf) {
 
 	// 00 1f 01 34 75 72 6e 3a 73 63 68 65 6d 61 73 2d 70 72 6f 66
 	// RealTimeMetaCameraMeta.xsd - Sony PMW-EX
-  if ((buf[0] === 0x00 && buf[1] === 0x1f && buf[2] === 0x01 && buf[3] === 0x34 && buf[4] === 0x75 && buf[5] === 0x72 && buf[6] === 0x6e)
-    	&& (buf[7] === 0x3a && buf[8] === 0x73 && buf[9] === 0x63 && buf[10] === 0x68)) {
+  if ((buf[0] === 0x00 && buf[1] === 0x1f && buf[2] === 0x01 && buf[3] === 0x34 && buf[4] === 0x75 && buf[5] === 0x72 && buf[6] === 0x6e) && (buf[7] === 0x3a && buf[8] === 0x73 && buf[9] === 0x63 && buf[10] === 0x68)) {
     return {
       ext: 'xsd',
       mime: 'text/xml',
