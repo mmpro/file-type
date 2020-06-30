@@ -46,7 +46,7 @@ module.exports = function (buf) {
 		if (/(ftyp)\S*(heic|heix|hevc)/.test(buf.toString())) {
 			return {
 				ext: 'heic',
-				mime: 'image/heif',
+				mime: 'image/heic',
 				info: 'isom'
 			}
 		}
