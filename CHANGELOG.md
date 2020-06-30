@@ -1,3 +1,20 @@
+<a name="3.8.1"></a>
+
+## [3.8.1](https://github.com/mmpro/file-type/compare/v3.8.0..v3.8.1) (2020-06-30 11:27:33)
+
+
+### Bug Fix
+
+* **App:** Use mimetype image/heic for heic | MP | [ecead1c2e64b4bf0f2cb1456ba4fc6925818eb45](https://github.com/mmpro/file-type/commit/ecead1c2e64b4bf0f2cb1456ba4fc6925818eb45)    
+Use mimetype image/heic for heic
+### Style
+
+* **App:** Lint fix | MP | [3a7b0a99472223c60ab331de5d3a8e808640f4b1](https://github.com/mmpro/file-type/commit/3a7b0a99472223c60ab331de5d3a8e808640f4b1)    
+Lint fix
+### Chores
+
+* **App:** Prepare for ac-semantic-release | MP | [ec1061c57c1768d1125bb3dd4bef68ff80c5c361](https://github.com/mmpro/file-type/commit/ec1061c57c1768d1125bb3dd4bef68ff80c5c361)    
+Prepare for ac-semantic-release
 **3.8.21 - 02.02.2018**
 + updated: Detect ISOM HVC1 MP4 format 
 
