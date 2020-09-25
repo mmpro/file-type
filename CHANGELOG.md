@@ -1,3 +1,17 @@
+<a name="3.8.2"></a>
+
+## [3.8.2](https://github.com/mmpro/file-type/compare/v3.8.1..v3.8.2) (2020-09-25 07:42:53)
+
+
+### Bug Fix
+
+* **App:** Fixed detecting Adobe Illustrator | MP | [c9f9a1bc46117ee89e94313ce0c3b22706d21b19](https://github.com/mmpro/file-type/commit/c9f9a1bc46117ee89e94313ce0c3b22706d21b19)    
+Fixed detecting Adobe Illustrator  
+Related issues: [undefined/undefined#AC-637](undefined/browse/AC-637)
+### Chores
+
+* **App:** Updated packages | MP | [5d078fdcb40e38eed12b4f430c7c0f826d3a473a](https://github.com/mmpro/file-type/commit/5d078fdcb40e38eed12b4f430c7c0f826d3a473a)    
+Updated packages
 <a name="3.8.1"></a>
 
 ## [3.8.1](https://github.com/mmpro/file-type/compare/v3.8.0..v3.8.1) (2020-06-30 11:27:33)
