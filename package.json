@@ -95,7 +95,7 @@
     "msi"
   ],
   "devDependencies": {
-    "ac-semantic-release": "^0.2.4",
+    "ac-semantic-release": "^0.2.5",
     "ava": "^1.4.1",
     "eslint": "^7.9.0",
     "lodash": "^4.17.20",
