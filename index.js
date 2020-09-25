@@ -29,15 +29,6 @@ module.exports = function (buf) {
 			mime: 'image/svg+xml'
 		};
 	}
-
-	if (buf[0] === 0x25 && buf[1] ===0x50 && buf[2] === 0x44 && buf[3] === 0x46 && buf.includes('%PDF')) {
-		return {
-			ext: 'ai',
-			mime: 'application/illustrator'
-		};
-	}
-
-
 		
 		// HEIC IMAGE
 		/*
